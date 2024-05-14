@@ -28,7 +28,7 @@ const Header = ()=>
                 <img className="logo" src={LOGO_URL}></img>
             </div>
             <div className="nav">
-                <ul>
+                <ul className=" bg-pink-500">
                    
                    <li>Online Status :{status === true ? "🟢" : "🔴"}</li>
                     <li><Link to="/">Home</Link></li>

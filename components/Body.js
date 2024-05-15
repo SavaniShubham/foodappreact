@@ -61,51 +61,104 @@ import useOnlineStatus from "../utils/useOnlineStatus";
         
     // }
     // this is written in ternary operstion in bellow
+
     return(  reslist.length === 0 ? <Shimmer/>:
 
-        <div className="body">
-            <div className="filter">
-                <div className="searchbar" >
-                    <input  type="text" className="search" placeholder="res name "
-                     value={searchname} onChange={(e)=>{ setsearch(e.target.value);}} ></input>
-                    <button  onClick={()=>{
-                        console.log(searchname);
-                        const filterlist = reslist.filter(res=> res.info.name.toLowerCase().includes(searchname.toLowerCase()));
-                        console.log(filterlist);
-                        // setreslist(filterlist);
-                        setfilterreslist(filterlist);
+    <div className="body">
+        <div className="flex p-3 ">
+            <div >
+                <input  type="text"placeholder="  res name "
+                 value={searchname} onChange={(e)=>{ setsearch(e.target.value);}} ></input>
+                <button className=" ml-3 bg-green-200 text-center w-20" onClick={()=>{
+                    console.log(searchname);
+                    const filterlist = reslist.filter(res=> res.info.name.toLowerCase().includes(searchname.toLowerCase()));
+                    console.log(filterlist);
+                    // setreslist(filterlist);
+                    setfilterreslist(filterlist);
+                       
+                    
+                }}>Search</button>
+            </div>
+
+            <button className=" ml-3 w-48 bg-slate-200"
+               onClick=
+               {
+                 ()=>{
+                  //here for the filter logic in js is very complicated and it is use for the update the list we use here local state variable this is create using the react hook useState()and for update this list we use a function this pass as second paramter 
+                  const filterlist = reslist.filter(res=> res.info.avgRating>4.3);
+                  // setreslist(filterlist);
+                  setfilterreslist(filterlist);
+                  }
+
+               }>Top Rated Restaurants 
+            </button>
+        </div>
+        <div className="res-container flex flex-wrap pl-20" >
+
+            {
+
+                 filterreslist.map(res => <Link key={res.info.id} to={"/restaurant/" + res.info.id}><Rescard  resdata={res}/></Link>)  
+                //  reslist.map(res => <Rescard key={res.info.id} resdata={res}/>)  
+                // datalist.map(res => <Rescard key={res.info.id} resdata={res}/>) 
+                //in above now data in reslist therefore   
+            }            
+            {/* <Rescard resname ="shubham's res" food="punjabi , gujarati"/>
+            <Rescard resname ="kfc" food="burger , chicken"/> */}
+        </div>
+    </div>
+)
+}
+
+
+
+
+
+
+    //     return(  reslist.length === 0 ? <Shimmer/>:
+
+//         <div className="body">
+//             <div className="filter">
+//                 <div className="searchbar" >
+//                     <input  type="text" className="search" placeholder="res name "
+//                      value={searchname} onChange={(e)=>{ setsearch(e.target.value);}} ></input>
+//                     <button  onClick={()=>{
+//                         console.log(searchname);
+//                         const filterlist = reslist.filter(res=> res.info.name.toLowerCase().includes(searchname.toLowerCase()));
+//                         console.log(filterlist);
+//                         // setreslist(filterlist);
+//                         setfilterreslist(filterlist);
                            
                         
-                    }}>Search</button>
-                </div>
+//                     }}>Search</button>
+//                 </div>
 
-                <button className="filter-btn"
-                   onClick=
-                   {
-                     ()=>{
-                      //here for the filter logic in js is very complicated and it is use for the update the list we use here local state variable this is create using the react hook useState()and for update this list we use a function this pass as second paramter 
-                      const filterlist = reslist.filter(res=> res.info.avgRating>4.3);
-                      // setreslist(filterlist);
-                      setfilterreslist(filterlist);
-                      }
+//                 <button className="filter-btn"
+//                    onClick=
+//                    {
+//                      ()=>{
+//                       //here for the filter logic in js is very complicated and it is use for the update the list we use here local state variable this is create using the react hook useState()and for update this list we use a function this pass as second paramter 
+//                       const filterlist = reslist.filter(res=> res.info.avgRating>4.3);
+//                       // setreslist(filterlist);
+//                       setfilterreslist(filterlist);
+//                       }
   
-                   }>Top Rated Restaurants 
-                </button>
-            </div>
-            <div className="res-container" >
+//                    }>Top Rated Restaurants 
+//                 </button>
+//             </div>
+//             <div className="res-container" >
 
-                {
+//                 {
 
-                     filterreslist.map(res => <Link key={res.info.id} to={"/restaurant/" + res.info.id}><Rescard  resdata={res}/></Link>)  
-                    //  reslist.map(res => <Rescard key={res.info.id} resdata={res}/>)  
-                    // datalist.map(res => <Rescard key={res.info.id} resdata={res}/>) 
-                    //in above now data in reslist therefore   
-                }            
-                {/* <Rescard resname ="shubham's res" food="punjabi , gujarati"/>
-                <Rescard resname ="kfc" food="burger , chicken"/> */}
-            </div>
-        </div>
-    )
-}
+//                      filterreslist.map(res => <Link key={res.info.id} to={"/restaurant/" + res.info.id}><Rescard  resdata={res}/></Link>)  
+//                     //  reslist.map(res => <Rescard key={res.info.id} resdata={res}/>)  
+//                     // datalist.map(res => <Rescard key={res.info.id} resdata={res}/>) 
+//                     //in above now data in reslist therefore   
+//                 }            
+//                 {/* <Rescard resname ="shubham's res" food="punjabi , gujarati"/>
+//                 <Rescard resname ="kfc" food="burger , chicken"/> */}
+//             </div>
+//         </div>
+//     )
+// }
 
 export default Body;

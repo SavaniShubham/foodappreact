@@ -23,23 +23,22 @@ const Header = ()=>
 
     return (
 
-        <div className="header ">
+        <div className=" flex justify-between shadow-xl">
             <div className=" logo-container">
-                <img className="logo" src={LOGO_URL}></img>
+                <img className=" w-44" src={LOGO_URL}></img>
             </div>
-            <div className="nav">
-                <ul className=" bg-pink-500">
+            <div className="flex items-center ">
+                <ul className="flex text-lg  pr-7">
                    
-                   <li>Online Status :{status === true ? "🟢" : "🔴"}</li>
-                    <li><Link to="/">Home</Link></li>
-                    {/* <li><a href="/about">About Us</a></li> */}
-                     <li><Link to="/about">About Us</Link></li> 
-                     {/* in react anchor tage is not use link the page withe component beacuse this is reaload the whole page */}
-                    {/* but the Link is only change that component of that route not reaload the whole page and this fast therefor react app is single page application inthat only the component is interchange not the whole page is reaload */}
-                    <li><Link to="/contect">Contect US</Link></li>
-                    <li><Link to="/grocery">Grocery</Link></li>
-                    <li>Cart</li>
-                    <button className="log-btn"  onClick={
+                   <li className=" px-3 ">Online Status :{status === true ? "🟢" : "🔴"}</li>
+                    <li className=" px-3"><Link to="/">Home</Link></li>
+                   
+                     <li className=" px-3"><Link to="/about">About Us</Link></li> 
+                    
+                    <li className=" px-3"><Link to="/contect">Contect US</Link></li>
+                    <li className=" px-3"><Link to="/grocery">Grocery</Link></li>
+                    <li className=" px-3">Cart</li>
+                    <button className=" px-3 w-20 text-center rounded-none border"  onClick={
                         ()=>
                         {
                             btnName == 'Login'? setbtn("Logout") : setbtn('Login');
@@ -52,5 +51,36 @@ const Header = ()=>
 
     )
 }
+//     return (
+
+//         <div className="header ">
+//             <div className=" logo-container">
+//                 <img className="logo" src={LOGO_URL}></img>
+//             </div>
+//             <div className="nav">
+//                 <ul>
+                   
+//                    <li>Online Status :{status === true ? "🟢" : "🔴"}</li>
+//                     <li><Link to="/">Home</Link></li>
+//                     {/* <li><a href="/about">About Us</a></li> */}
+//                      <li><Link to="/about">About Us</Link></li> 
+//                      {/* in react anchor tage is not use link the page withe component beacuse this is reaload the whole page */}
+//                     {/* but the Link is only change that component of that route not reaload the whole page and this fast therefor react app is single page application inthat only the component is interchange not the whole page is reaload */}
+//                     <li><Link to="/contect">Contect US</Link></li>
+//                     <li><Link to="/grocery">Grocery</Link></li>
+//                     <li>Cart</li>
+//                     <button className="log-btn"  onClick={
+//                         ()=>
+//                         {
+//                             btnName == 'Login'? setbtn("Logout") : setbtn('Login');
+//                         }
+//                     }>{btnName}</button>
+//                 </ul>
+//             </div>
+
+//         </div>
+
+//     )
+// }
 
 export default Header;

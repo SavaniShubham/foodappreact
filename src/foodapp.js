@@ -20,7 +20,7 @@ const Applayout  = ()=>
 {
     
     return (
-        <div className ="app">
+        <div className ="app box-border m-0 p-0">
         
 
         <Header/>

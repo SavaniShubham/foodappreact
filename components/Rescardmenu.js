@@ -38,50 +38,94 @@ const RescardMenu =()=>
             const { itemCards } = resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
             console.log(itemCards);
 
+
+
+            return(      
+                <div>
+    
+                    <div className="flex justify-center">
+                        <div className=" h-28 w-6/12 mt-7">
+                             <h1 className=" font-bold">{name}</h1>
+                             <h2 className= " font-light text-gray-900">{cuisines.join(" , ")}</h2>
+                             <h3 className=" text-red-300">{costForTwoMessage}</h3>
+                        </div>
+                    </div>  
+    
+                   <div className="flex justify-center items-center  pt-7 pb-14">
+                    <span className=" text-3xl underline"> -: M E N U :- </span>
+                   </div>
+                    
+    
+                    <ul>
+                        
+                          {
+                            itemCards.map((item)=>
+                            (
+                                // <li key={item.card.info.id}>{item.card.info.name} - Rs {item.card.info.defaultPrice/100 || item.card.info.finalPrice/100  || item.card.info.price/100 }</li>
+                             <div className=" flex justify-center" key={item.card.info.id}>
+                                <div className=" flex justify-between w-6/12 h-44border-solid border-b-2 border-gray-100 mb-3">
+                                  <div className=" w-9/12 mt-3  items-center font-mono ">
+                                    <div>{item.card.info.itemAttribute.vegClassifier}</div>
+                                    <div className=" font-bold text-gray-950">{item.card.info.name}</div>
+                                    <div className=" font-semibold tracking-tight">Rs {item.card.info.defaultPrice/100 || item.card.info.finalPrice/100  || item.card.info.price/100 }</div>
+                                    <div className=" font-sans break-words mt-3 font-extralight text-gray-900">{item.card.info.description}</div>
+            
+                                  </div>
+                                  <div className="item_image ml-12">
+                                     <img className="food_image  w-36 mt-3 rounded-xl" src={CON_URL+item.card.info.imageId}></img>
+                                  </div>
+                                  
+                                 </div>
+                              </div>
+                            ))
+                          }
+                    </ul>
+                </div>);      
+        };
                  
-        return(      
-            <div >
+    //     return(      
+    //         <div >
 
-                <div className="res_details">
-                    <div className="res_name">
-                         <h1>{name}</h1>
-                         <h2 >{cuisines.join(" , ")}</h2>
-                         <h3>{costForTwoMessage}</h3>
-                    </div>
-                </div>  
+    //             <div className="res_details">
+    //                 <div className="res_name">
+    //                      <h1>{name}</h1>
+    //                      <h2 >{cuisines.join(" , ")}</h2>
+    //                      <h3>{costForTwoMessage}</h3>
+    //                 </div>
+    //             </div>  
 
-               <div className="menu">
-                <span className="menu_name"> -: M E N U :- </span>
-               </div>
+    //            <div className="menu">
+    //             <span className="menu_name"> -: M E N U :- </span>
+    //            </div>
                 
 
-                <ul>
+    //             <ul>
                     
-                      {
-                        itemCards.map((item)=>
-                        (
-                            // <li key={item.card.info.id}>{item.card.info.name} - Rs {item.card.info.defaultPrice/100 || item.card.info.finalPrice/100  || item.card.info.price/100 }</li>
-                            <div className="item_body" key={item.card.info.id}>
-                            <div className="item_container">
+    //                   {
+    //                     itemCards.map((item)=>
+    //                     (
+    //                         // <li key={item.card.info.id}>{item.card.info.name} - Rs {item.card.info.defaultPrice/100 || item.card.info.finalPrice/100  || item.card.info.price/100 }</li>
+    //                         <div className="item_body" key={item.card.info.id}>
+    //                         <div className="item_container">
                            
 
                     
-                             <div className="item_data">
-                                <div className="vegi">{item.card.info.itemAttribute.vegClassifier}</div>
-                                <div className="item_name">{item.card.info.name}</div>
-                                <div className="item_price">Rs {item.card.info.defaultPrice/100 || item.card.info.finalPrice/100  || item.card.info.price/100 }</div>
-                                <div className="item_des">{item.card.info.description}</div>
+    //                          <div className="item_data">
+    //                             <div className="vegi">{item.card.info.itemAttribute.vegClassifier}</div>
+    //                             <div className="item_name">{item.card.info.name}</div>
+    //                             <div className="item_price">Rs {item.card.info.defaultPrice/100 || item.card.info.finalPrice/100  || item.card.info.price/100 }</div>
+    //                             <div className="item_des">{item.card.info.description}</div>
         
-                            </div>
-                              <div className="item_image">
-                                 <img className="food_image" src={CON_URL+item.card.info.imageId}></img>
-                              </div>
+    //                         </div>
+    //                           <div className="item_image">
+    //                              <img className="food_image" src={CON_URL+item.card.info.imageId}></img>
+    //                           </div>
                               
-                             </div>
-                        </div>
-                        ))
-                      }
-                </ul>
-            </div>);      
-    };
+    //                          </div>
+    //                     </div>
+    //                     ))
+    //                   }
+    //             </ul>
+    //         </div>);      
+    // };
 export default RescardMenu;

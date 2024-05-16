@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import {  CON_URL } from "../utils/constants";
 import useResmenuhook from "../utils/useResmenuhook";
 import Rescategory from "./Rescategory";
+import { useState } from "react";
 
 
 
@@ -12,6 +13,8 @@ const RescardMenu =()=>
     {
         // const [resmenulist,setmenulist]=useState(null);
         const {resId} = useParams();
+
+        const [expandindex , setexpandindex]=useState(null);
      
         const resmenulist = useResmenuhook(resId);//(now the whole logic of fetching the data and create and maintain the set variable in the useResmenuhook custom hook)
         // useEffect(()=>
@@ -47,6 +50,7 @@ const RescardMenu =()=>
                                                 c.card?.["card"]?.["@type"]=='type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
                                             );
             // console.log(categories);
+            
 
 
             return(      
@@ -64,11 +68,23 @@ const RescardMenu =()=>
                     <span className=" text-3xl underline"> -: M E N U :- </span>
                    </div>
                     
-                    <ul>
-                        
+                    <ul>   
                         {
                             //create the accordian with the title of catagory and that data
-                            categories.map((c)=> <Rescategory key={c?.card?.card?.title} item={c?.card?.card}/>)
+                            // categories.map((c)=> <Rescategory key={c?.card?.card?.title} item={c?.card?.card} />)
+
+
+                            //controled component
+                            //this concept is knwon as lifting state up (we lift the local state variable of each all categories to the parent Rescardmenu )
+                            //here we pass showitems and setindex to control the state variable for all the children(catagories) by the parent component (Rescardmenu)
+                             categories.map((c , index)=> <Rescategory 
+                             key={c?.card?.card?.title} 
+                             item={c?.card?.card} 
+                             showitems={ index == expandindex ? true : false }
+                             setindex ={()=> expandindex == index ? setexpandindex(null) : setexpandindex(index)} 
+                             
+                             />)
+                            //  we can't access the parent state variable by the child for access and control that  we pass it the like of function (setindex)
                         }
                     </ul>
 {/*     

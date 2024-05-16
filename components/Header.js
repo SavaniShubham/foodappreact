@@ -14,7 +14,7 @@ const Header = ()=>
 
     useEffect(()=>
     {
-        console.log("use Effect is called");
+        // console.log("use Effect is called");
     },
         // );//this will called after all the time when component rereder
     // []);//this will called at only initial time when component render

@@ -38,13 +38,15 @@ const RescardMenu =()=>
           
             const { itemCards } = resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
             // console.log(itemCards);
-            console.log(resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+            //we crated  categories for the perticulat catagory data
+            // console.log(resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
             const categories = resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
                                         (c) =>
                                                 c.card?.["card"]?.["@type"]=='type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
                                             );
-            console.log(categories);
+            // console.log(categories);
 
 
             return(      
@@ -63,8 +65,10 @@ const RescardMenu =()=>
                    </div>
                     
                     <ul>
+                        
                         {
-                            categories.map((c)=> <Rescategory item={c?.card?.card}/>)
+                            //create the accordian with the title of catagory and that data
+                            categories.map((c)=> <Rescategory key={c?.card?.card?.title} item={c?.card?.card}/>)
                         }
                     </ul>
 {/*     

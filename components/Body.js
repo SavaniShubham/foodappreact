@@ -1,4 +1,4 @@
-import Rescard from "./Rescard";
+import Rescard , {withprometedlabel} from "./Rescard";
 // import datalist from "../utils/mokedata";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -15,12 +15,17 @@ import useOnlineStatus from "../utils/useOnlineStatus";
     //local state variable (above is array destrcture it will same as const arr= useState(datalist); const [reslist,setreslist]= arr; )
 
     const [reslist,setreslist]= useState([]);
+
+    console.log(reslist);
+
+    const Rescardprometed = withprometedlabel(Rescard);
    
     //now the help of the that no dummy data will be showen before the useEffect callback 
      useEffect(
     ()=>{
         console.log("this will called after the component render");
         fetchdata();
+       
      }, []) ;
      //useEffect callback function will work after the ui component will be render 
      //in here we fetch the swiggy api and upadate the reslist with the api data in the fetchdata -> setreslist function
@@ -32,7 +37,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
         const json = await api.json() ;
 
-        console.log(json);
+        // console.log(json);
         // setreslist(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);//this no good way so written it with optional chaning 
         setreslist(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setfilterreslist(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -73,7 +78,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
                     console.log(searchname);
                     const filterlist = reslist.filter(res=> res.info.name.toLowerCase().includes(searchname.toLowerCase()));
                     console.log(filterlist);
-                    // setreslist(filterlist);
+                   
                     setfilterreslist(filterlist);
                        
                     
@@ -84,9 +89,9 @@ import useOnlineStatus from "../utils/useOnlineStatus";
                onClick=
                {
                  ()=>{
-                  //here for the filter logic in js is very complicated and it is use for the update the list we use here local state variable this is create using the react hook useState()and for update this list we use a function this pass as second paramter 
+                 
                   const filterlist = reslist.filter(res=> res.info.avgRating>4.3);
-                  // setreslist(filterlist);
+                 
                   setfilterreslist(filterlist);
                   }
 
@@ -97,13 +102,19 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
             {
 
-                 filterreslist.map(res => <Link key={res.info.id} to={"/restaurant/" + res.info.id}><Rescard  resdata={res}/></Link>)  
-                //  reslist.map(res => <Rescard key={res.info.id} resdata={res}/>)  
-                // datalist.map(res => <Rescard key={res.info.id} resdata={res}/>) 
-                //in above now data in reslist therefore   
-            }            
-            {/* <Rescard resname ="shubham's res" food="punjabi , gujarati"/>
-            <Rescard resname ="kfc" food="burger , chicken"/> */}
+                 filterreslist.map((res) =>(
+                     <Link 
+                     key={res.info.id} 
+                    //  if taring>4.5 then it load the promtedlabel oherwise only that card
+                     to={"/restaurant/" + res.info.id}>
+                        {
+                            res.info.avgRating>4.5 ?(<Rescardprometed resdata={res}/>) :(<Rescard resdata={res}/>)
+                        }
+                        {/* <Rescard  resdata={res}/> */}
+                        </Link>
+                        )  )
+                
+            }                      
         </div>
     </div>
 )

@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import {  CON_URL } from "../utils/constants";
 import useResmenuhook from "../utils/useResmenuhook";
+import Rescategory from "./Rescategory";
 
 
 
@@ -36,8 +37,14 @@ const RescardMenu =()=>
             const {name , cuisines , costForTwoMessage } = resmenulist?.cards[2]?.card?.card?.info;
           
             const { itemCards } = resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-            console.log(itemCards);
+            // console.log(itemCards);
+            console.log(resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
+            const categories = resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+                                        (c) =>
+                                                c.card?.["card"]?.["@type"]=='type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
+                                            );
+            console.log(categories);
 
 
             return(      
@@ -45,8 +52,8 @@ const RescardMenu =()=>
     
                     <div className="flex justify-center">
                         <div className=" h-28 w-6/12 mt-7">
-                             <h1 className=" font-bold">{name}</h1>
-                             <h2 className= " font-light text-gray-900">{cuisines.join(" , ")}</h2>
+                             <h1 className=" font-bold text-2xl">{name}</h1>
+                             <h2 className= " font-semibold text-gray-900">{cuisines.join(" , ")}</h2>
                              <h3 className=" text-red-300">{costForTwoMessage}</h3>
                         </div>
                     </div>  
@@ -55,7 +62,12 @@ const RescardMenu =()=>
                     <span className=" text-3xl underline"> -: M E N U :- </span>
                    </div>
                     
-    
+                    <ul>
+                        {
+                            categories.map((c)=> <Rescategory item={c?.card?.card}/>)
+                        }
+                    </ul>
+{/*     
                     <ul>
                         
                           {
@@ -79,7 +91,7 @@ const RescardMenu =()=>
                               </div>
                             ))
                           }
-                    </ul>
+                    </ul> */}
                 </div>);      
         };
                  

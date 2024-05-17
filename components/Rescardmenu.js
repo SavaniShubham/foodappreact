@@ -39,7 +39,7 @@ const RescardMenu =()=>
                
             const {name , cuisines , costForTwoMessage } = resmenulist?.cards[2]?.card?.card?.info;
           
-            const { itemCards } = resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+            // const { itemCards } = resmenulist?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
             // console.log(itemCards);
 
             //we crated  categories for the perticulat catagory data

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import Loggedinuser from "../utils/Loggedinuser";
 
 
 
@@ -9,6 +10,7 @@ const Header = ()=>
 
 
 {
+    const {username }=useContext(Loggedinuser);
     const [btnName,setbtn] = useState('Login');
     //always use usestate inside the component and try to put at top in the component also don't use it inside conditional block , loop etc
 
@@ -44,6 +46,7 @@ const Header = ()=>
                             btnName == 'Login'? setbtn("Logout") : setbtn('Login');
                         }
                     }>{btnName}</button>
+                    <li className=" font-bold">{username}</li>
                 </ul>
             </div>
 

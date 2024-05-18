@@ -33,25 +33,28 @@ const Applayout  = ()=>
     //for change the the name in the whole app we wrap the all inside Loggedinuser.provider in that we give the value , this value is override not change the acctual value of it (Default user) . in that header we give the value of it taxil and other component we give the value of it  shubham , if outside the whole component if we use the username value is Default user
     //the value is depend on where you use the Loggedinuser.provider if you don't use then the value is default value 
 
+    //thern we create on input box in body.js in whar ever you add it the name of username , therfore updating the value we pass setusernamebyapi into Loggedinuser.provider thetefore we can access it by any where now it is part of context 
+    //we bind the local state variable with the context it means if the state value is updated the value of context is updated and when we use this value is also upadated 
+
     const data = {
        name : "shubham savani ",
     }
     setusernamebyapi(data.name);
 
-},[]);
+},[]); 
     
     return (
     //here value of username = Default user
-        <Loggedinuser.Provider value={{username : usernamebyapi}}>
+        <Loggedinuser.Provider value={{username : usernamebyapi , setusernamebyapi}}>
            {/* here value of username = shubham */}
-        <div className ="box-border m-0 p-0">
+        <div className ="box-border m-0 p-0">    
 
-
+            {/* 
               <Loggedinuser.Provider value={{username : "taxil"}}>
                   {/* here value of username = taxil  */}
-                 <Header/>
-              </Loggedinuser.Provider>
-         
+                 {/* <Header/>
+              </Loggedinuser.Provider> */}
+          <Header/>
          
            <Outlet/>
            {/* outlet is use to reder the children route component */}

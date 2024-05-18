@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 
-
+import Loggedinuser from "../utils/Loggedinuser";
+import { useContext } from "react";
 
  export const Body =()=>
 
@@ -57,7 +58,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
             )    
         }
 
-   
+ 
+    const {  username , setusernamebyapi} = useContext(Loggedinuser);
 
     // if (reslist.length === 0) 
     // {
@@ -97,6 +99,11 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
                }>Top Rated Restaurants 
             </button>
+                <div className=" ml-3 ">
+                <label>username :</label>
+                <input className=" pl -2" type=" text " value={username} onChange={ (e)=>{setusernamebyapi(e.target.value) } }></input>
+                </div>
+            
         </div>
         <div className="res-container flex flex-wrap pl-20" >
 

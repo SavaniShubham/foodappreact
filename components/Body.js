@@ -99,11 +99,11 @@ import { useContext } from "react";
 
                }>Top Rated Restaurants 
             </button>
-                <div className=" ml-3 ">
+                <div className=" ml-3 border border-solid border-black">
                 <label>username :</label>
                 <input className=" pl -2" type=" text " value={username} onChange={ (e)=>{setusernamebyapi(e.target.value) } }></input>
                 </div>
-            
+                  
         </div>
         <div className="res-container flex flex-wrap pl-20" >
 

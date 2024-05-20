@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Loggedinuser from "../utils/Loggedinuser";
+import { useSelector } from "react-redux";
 
 
 
@@ -21,7 +22,13 @@ const Header = ()=>
         // );//this will called after all the time when component rereder
     // []);//this will called at only initial time when component render
     [btnName]);//this will called after all the time when the value of btnName is changed and component rerender
+    
+    
     const status = useOnlineStatus();//use this show that internet is on or off
+
+    //subscribing to redux store 
+    const cartitem = useSelector((store)=> store.cart.items);
+    console.log(cartitem);
 
     return (
 
@@ -39,7 +46,7 @@ const Header = ()=>
                     
                     <li className=" px-3"><Link to="/contect">Contect US</Link></li>
                     <li className=" px-3"><Link to="/grocery">Grocery</Link></li>
-                    <li className=" px-3">Cart</li>
+                    <li className=" px-3 "><Link to="/cart">🛒 {cartitem.length}</Link></li>
                     <button className=" px-3 w-20 text-center rounded-none border"  onClick={
                         ()=>
                         {

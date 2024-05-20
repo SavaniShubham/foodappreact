@@ -14,6 +14,9 @@ import Error from "../components/ErrorPage";
 import RescardMenu from "../components/Rescardmenu";
 // import Grocery from "../components/Grocery";
 import { lazy , Suspense } from "react";
+import { Provider } from "react-redux";
+import appstore from "../utils/appstore";
+import Cart from "../components/cart";
 
 const Grocery = lazy(()=> import("../components/Grocery"));//this is way to import in lazy loading 
 const About = lazy(()=> import("../components/AboutUs"));
@@ -42,26 +45,37 @@ const Applayout  = ()=>
     setusernamebyapi(data.name);
 
 },[]); 
-    
-    return (
-    //here value of username = Default user
-        <Loggedinuser.Provider value={{username : usernamebyapi , setusernamebyapi}}>
-           {/* here value of username = shubham */}
-        <div className ="box-border m-0 p-0">    
 
-            {/* 
-              <Loggedinuser.Provider value={{username : "taxil"}}>
-                  {/* here value of username = taxil  */}
-                 {/* <Header/>
-              </Loggedinuser.Provider> */}
+return (
+    //wrapp whole app in provider
+        <Provider store={appstore}>
+        <Loggedinuser.Provider value={{username : usernamebyapi , setusernamebyapi}}>
+        <div className ="box-border m-0 p-0">    
           <Header/>
-         
            <Outlet/>
-           {/* outlet is use to reder the children route component */}
-       
         </div>
         </Loggedinuser.Provider>
+        </Provider>
     )
+    // return (
+    // //here value of username = Default user
+    //     <Loggedinuser.Provider value={{username : usernamebyapi , setusernamebyapi}}>
+    //        {/* here value of username = shubham */}
+    //     <div className ="box-border m-0 p-0">    
+
+    //         {/* 
+    //           <Loggedinuser.Provider value={{username : "taxil"}}>
+    //               {/* here value of username = taxil  */}
+    //              {/* <Header/>
+    //           </Loggedinuser.Provider> */}
+    //       <Header/>
+         
+    //        <Outlet/>
+    //        {/* outlet is use to reder the children route component */}
+       
+    //     </div>
+    //     </Loggedinuser.Provider>
+    // )
 }
 
 
@@ -95,6 +109,10 @@ const appRouter =createBrowserRouter([
                 path:"/grocery",
                 element:<Suspense fallback = {<h1>loading ...... ...... .....</h1>}><Grocery/></Suspense>,
                 //fallback is shown when the browser in suspended the  Grocery componenet it don't have data of it 
+            },
+            {
+                path:"/cart",
+                element:<Cart/>,
             },
         ],
         errorElement:<Error/>

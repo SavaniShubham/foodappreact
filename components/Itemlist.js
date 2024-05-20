@@ -1,7 +1,17 @@
+import { useDispatch } from "react-redux";
+import { additem } from "../utils/cartslice";
 import { CON_URL } from "../utils/constants";
+
 
 const Itemlist = ({itemCards})=>
     {
+      const dispatch = useDispatch();
+      const handlecart =(item)=>
+        {
+           dispatch(additem(item));
+         }
+        //here we dispatch the action (in the backend additem(item) == { payload : item } therfore we do action.payload)
+
         return(
             <div >
                <ul>
@@ -20,7 +30,7 @@ const Itemlist = ({itemCards})=>
                                 </div>
                                 <div className=" ml-12">
                                    <div className=" absolute mx-8 mt-[132px] w-20 h-8 bg-white text-green-600 text-center rounded-lg  shadow-lg">
-                                   <button >Add+</button>
+                                   <button onClick={()=> handlecart(item)} >Add+</button>
                                    </div>
                                    <img className="  w-36 h-40 pb-1 rounded-xl cursor-pointer" src={CON_URL+item.card.info.imageId}></img>
                                   

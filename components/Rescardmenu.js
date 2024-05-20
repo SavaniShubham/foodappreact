@@ -29,7 +29,7 @@ const RescardMenu =()=>
 
         //         console.log(json);
 
-        //         setmenulist(json.data);
+        //         setmenulist(json.data); 
                 
         //     };
             if (resmenulist === null )   //if this condition is not put then the bellow distructred is give error because the value of resmenulist is null for first time

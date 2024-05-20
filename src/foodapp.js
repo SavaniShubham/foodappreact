@@ -16,7 +16,9 @@ import RescardMenu from "../components/Rescardmenu";
 import { lazy , Suspense } from "react";
 import { Provider } from "react-redux";
 import appstore from "../utils/appstore";
-import Cart from "../components/cart";
+import Cart from "../components/Cart";
+
+
 
 const Grocery = lazy(()=> import("../components/Grocery"));//this is way to import in lazy loading 
 const About = lazy(()=> import("../components/AboutUs"));
@@ -112,8 +114,9 @@ const appRouter =createBrowserRouter([
             },
             {
                 path:"/cart",
-                element:<Cart/>,
+                element:<Cart/>
             },
+          
         ],
         errorElement:<Error/>
     },

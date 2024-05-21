@@ -9,7 +9,7 @@ const Cart = ()=>
         console.log(cartitem);
         const totalprice = useSelector((store) => store.cart.totalprice);
         console.log(totalprice);
-        let Gst = Math.floor((totalprice*11)/100);
+        let Gst = ((totalprice*11)/100).toPrecision(2);
         const dispatch =useDispatch();
         const handleremoveclick = (item)=>
           {

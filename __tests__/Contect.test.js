@@ -42,8 +42,8 @@ test('should load 2  input boxes in contect component', () => {
     const inputbox =screen.getAllByRole("textbox");
 
     // console.log(inputbox); // it is array of object 
-    console.log(inputbox[0]); // this is basically virtual dom react element (in object )(react-fiber node )(jsx element )(react-element)
-    console.log(inputbox.length);
+    // console.log(inputbox[0]); // this is basically virtual dom react element (in object )(react-fiber node )(jsx element )(react-element)
+    // console.log(inputbox.length);
     
     expect(inputbox.length).toBe(2);
     // expect(inputbox.length).not.toBe(3);

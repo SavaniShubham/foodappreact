@@ -17,7 +17,7 @@ import { useContext } from "react";
 
     const [reslist,setreslist]= useState([]);
 
-    console.log(reslist);
+    // console.log(reslist);
 
     const Rescardprometed = withprometedlabel(Rescard);
    
@@ -74,12 +74,12 @@ import { useContext } from "react";
     <div className="body">
         <div className="flex p-3 ">
             <div >
-                <input  type="text"placeholder="  res name "
+                <input  type="text" placeholder="res name" data-testid ="searchinput"
                  value={searchname} onChange={(e)=>{ setsearch(e.target.value);}} ></input>
                 <button className=" ml-3 bg-green-200 text-center w-20" onClick={()=>{
-                    console.log(searchname);
+                    // console.log(searchname);
                     const filterlist = reslist.filter(res=> res.info.name.toLowerCase().includes(searchname.toLowerCase()));
-                    console.log(filterlist);
+                    // console.log(filterlist);
                    
                     setfilterreslist(filterlist);
                        

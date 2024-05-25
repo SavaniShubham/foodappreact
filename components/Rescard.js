@@ -12,7 +12,7 @@ import { CON_URL } from "../utils/constants";
     
     
       return (
-        <div className="res-card w-48  h-[400px] m-3 rounded-lg shadow-xl" style={{backgroundColor : "#f0f0f0"}}>
+        <div  data-testid="rescard" className="res-card w-48  h-[400px] m-3 rounded-lg shadow-xl" style={{backgroundColor : "#f0f0f0"}}>
 
             <img className=" w-48 h-48 rounded-lg  " src={CON_URL+cloudinaryImageId}></img>
             

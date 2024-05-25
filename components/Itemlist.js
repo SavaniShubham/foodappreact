@@ -20,7 +20,7 @@ const Itemlist = ({itemCards})=>
                           itemCards.map((item)=>
                           (
                              
-                                <div className=" flex justify-between h-44 border-solid border-b-2 border-gray-200 mb-3" key={item.card.info.id}>
+                                <div data-testid="menuitems" className=" flex justify-between h-44 border-solid border-b-2 border-gray-200 mb-3" key={item.card.info.id}>
                                 <div className=" w-9/12 mt-3  items-center font-mono ">
                                   <div>{item.card.info.itemAttribute.vegClassifier ==="VEG" ? "🟩" : "🟥"}</div>
                                   <div className=" font-bold text-gray-950">{item.card.info.name}</div>

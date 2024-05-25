@@ -24,7 +24,7 @@ import { useContext } from "react";
     //now the help of the that no dummy data will be showen before the useEffect callback 
      useEffect(
     ()=>{
-        console.log("this will called after the component render");
+        // console.log("this will called after the component render");
         fetchdata();
        
      }, []) ;

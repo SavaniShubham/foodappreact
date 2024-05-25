@@ -28,7 +28,7 @@ const Header = ()=>
 
     //subscribing to redux store 
     const cartitem = useSelector((store)=> store.cart.items);
-    console.log(cartitem);
+    // console.log(cartitem);
 
     return (
 
@@ -53,7 +53,7 @@ const Header = ()=>
                             btnName == 'Login'? setbtn("Logout") : setbtn('Login');
                         }
                     }>{btnName}</button>
-                    <li className=" font-bold">{username}</li>
+                    <li  className=" font-bold">{username}</li>
                 </ul>
             </div>
 

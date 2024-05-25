@@ -16,19 +16,19 @@ global.fetch=jest.fn(()=>
     })
 })
 
-beforeAll(()=>{
-    console.log("this will show at first before the any test case is not run ");
-})
-beforeEach(()=>{
-    console.log("this will show before the every test cases ");
-})
+// beforeAll(()=>{
+//     console.log("this will show at first before the any test case is not run ");
+// })
+// beforeEach(()=>{
+//     console.log("this will show before the every test cases ");
+// })
 
-afterAll(()=>{
-    console.log("this will show at last after the all test case run ");
-})
-afterEach(()=>{
-    console.log("this will show after the every test cases ");
-})
+// afterAll(()=>{
+//     console.log("this will show at last after the all test case run ");
+// })
+// afterEach(()=>{
+//     console.log("this will show after the every test cases ");
+// })
 
 
 it("should load the search event for burger input ", async ()=>

@@ -24,12 +24,12 @@ const Cart = ()=>
             <div className=" w-3/4 m-auto flex justify-between">
                      <div >
                          <div className=" absolute mx-[800px] mt-5 w-14 h-10 text-2xl bg-white text-gray-400 text-center  shadow-lg">
-                         <button onClick={()=> clearcart()} >x</button>
+                         <button onClick={()=> clearcart()} >X</button>
                          </div>
                          {
                           cartitem.map((item)=>
                           (                       
-                           <div className="  m-auto flex h-32 border-solid border-b-2 border-gray-200 pt-10" key={item.card.info.id}>
+                           <div data-testid="cartitems" className="  m-auto flex h-32 border-solid border-b-2 border-gray-200 pt-10" key={item.card.info.id}>
 
                                  
                                    <div>
